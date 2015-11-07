@@ -54,12 +54,15 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
     @Override
     public void onBindViewHolder(CountryViewHolder holder, int position) {
+        /** Obtenemos el país de la posición solicitada */
         Country country = countries[position];
+        /** Llamamos a nuestro método personalizado que asigna los valores a los componentes del layout */
         holder.bindCountry(country);
     }
 
     @Override
     public int getItemCount() {
+        /** Devolvemos el número de elementos del array de países */
         return countries.length;
     }
 
@@ -73,8 +76,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
         public CountryViewHolder(View itemView, Context context) {
             super(itemView);
-
+            /** Guardamos el contexto para poder acceder a los recursos de la aplicación */
             this.context = context;
+            /** Obtenemos la referencia a los componentes del layout */
             ivFlag = (ImageView) itemView.findViewById(R.id.ivFlag);
             tvCountryName = (TextView) itemView.findViewById(R.id.tvCountryName);
             tvCountryCapital = (TextView) itemView.findViewById(R.id.tvCountryCapital);
