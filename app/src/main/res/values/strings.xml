@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecyclerViewCountries</string>
+    <string name="flag_description">Bandera del país</string>
+    <string name="capital_country">Capital:</string>
+    <string name="population_country">Población:</string>
+    <string name="unknown">Desconocido</string>
+</resources>
