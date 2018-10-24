@@ -101,7 +101,14 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
                 /** Obtenemos el ID del drawable (imagen de la bandera) a partir del flagName */
                 int resID = context.getResources().getIdentifier(flagName, "drawable", context.getPackageName());
                 /** Si hemos conseguido obtener el ID del drawable asociado, se lo asignamos al ImageView */
-                ivFlag.setImageResource(resID);
+                if(resID != 0) {
+                    ivFlag.setImageResource(resID);
+                } else {
+                    flagName = "_onu";
+                    resID = context.getResources().getIdentifier(flagName, "drawable", context.getPackageName());
+                    ivFlag.setImageResource(resID);
+                }
+
             } catch (Exception e) {
                 /**
                  * Si falla la obtención del ID del drawable no hacemos nada. Simplemente se quedará
