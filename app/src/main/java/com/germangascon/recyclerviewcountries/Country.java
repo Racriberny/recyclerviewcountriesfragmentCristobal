@@ -1,7 +1,7 @@
 package com.germangascon.recyclerviewcountries;
 
 /**
- * Created by ggascon on 22/10/15.
+ * Created by ggascon
  * Nuestro modelo para albergar los datos de cada país
  */
 public class Country {

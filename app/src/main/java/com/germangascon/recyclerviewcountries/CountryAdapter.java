@@ -26,7 +26,7 @@ import android.widget.TextView;
  * RecyclerViewCountries
  *
  * @author Germán Gascón
- * @version 0.1, 2015-11-07
+ * @version 0.2, 2018-10-24
  * @since 0.1
  **/
 

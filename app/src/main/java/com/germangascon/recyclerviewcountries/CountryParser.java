@@ -15,7 +15,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
- * Created by ggascon on 22/10/15.
+ * Created by ggascon
  */
 public class CountryParser {
 
