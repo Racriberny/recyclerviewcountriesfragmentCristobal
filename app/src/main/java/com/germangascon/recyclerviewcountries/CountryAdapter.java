@@ -30,10 +30,12 @@ import android.widget.TextView;
  * @since 0.1
  **/
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder>{
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder>
+    implements View.OnClickListener {
 
     private Country[] countries;
     private Context context;
+    private View.OnClickListener listener;
 
     public CountryAdapter(Context context, Country[] countries) {
         this.context = context;
@@ -46,6 +48,9 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_country, parent, false);
         /** Ampliación: Inflamos el layout preparado para la visualización en formato Grid */
         //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.griditem_country, parent, false);
+
+        /** Asignamos el listener */
+        itemView.setOnClickListener(this);
 
         /** Creamos el ViewHolder personalizado y lo devolvemos */
         CountryViewHolder viewHolder = new CountryViewHolder(itemView,context);
@@ -64,6 +69,17 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     public int getItemCount() {
         /** Devolvemos el número de elementos del array de países */
         return countries.length;
+    }
+
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null) {
+            listener.onClick(view);
+        }
     }
 
     public static class CountryViewHolder extends RecyclerView.ViewHolder {

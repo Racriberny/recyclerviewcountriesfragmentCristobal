@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,9 +26,16 @@ public class MainActivity extends AppCompatActivity {
         /** Parseamos el archivo */
         if(parser.parse()) {
             /** Si ha ido bien, obtenemos el array de objetos Country */
-            Country[] countries = parser.getCountries();
+            final Country[] countries = parser.getCountries();
             /** Creamos una instancia de nuestro adaptador personalizado */
             CountryAdapter adapter = new CountryAdapter(this, countries);
+
+            adapter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(MainActivity.this, "País: " + countries[recView.getChildAdapterPosition(view)].getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
             /** Asignamos el adaptador a nuestro RecyclerView */
             recView.setAdapter(adapter);
             /** Creamos y asignamos el modo de visualización, en este caso una Lista vertical */
