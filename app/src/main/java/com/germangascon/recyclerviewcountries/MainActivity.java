@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /** Obtenemos la referencia al RecyclerView */
-        recView = (RecyclerView)findViewById(R.id.recView);
+        recView = findViewById(R.id.recView);
         recView.setHasFixedSize(true);
 
         /** Creamos una instancia de nuestro parser personalizado */
