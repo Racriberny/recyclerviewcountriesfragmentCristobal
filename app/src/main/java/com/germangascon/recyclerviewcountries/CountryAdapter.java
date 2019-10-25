@@ -26,20 +26,20 @@ import android.widget.TextView;
  * RecyclerViewCountries
  *
  * @author Germán Gascón
- * @version 0.2, 2018-10-24
+ * @version 0.3, 2019-10-24
  * @since 0.1
  **/
 
-public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder>
-    implements View.OnClickListener {
+public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 
     private Country[] countries;
     private Context context;
-    private View.OnClickListener listener;
+    private ICountryListener listener;
 
-    public CountryAdapter(Context context, Country[] countries) {
+    public CountryAdapter(Context context, Country[] countries, ICountryListener listener) {
         this.context = context;
         this.countries = countries;
+        this.listener = listener;
     }
 
     @Override
@@ -49,11 +49,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         /** Ampliación: Inflamos el layout preparado para la visualización en formato Grid */
         //View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.griditem_country, parent, false);
 
-        /** Asignamos el listener */
-        itemView.setOnClickListener(this);
-
         /** Creamos el ViewHolder personalizado y lo devolvemos */
-        CountryViewHolder viewHolder = new CountryViewHolder(itemView,context);
+        CountryViewHolder viewHolder = new CountryViewHolder(itemView,context, listener);
         return viewHolder;
     }
 
@@ -71,26 +68,16 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         return countries.length;
     }
 
-    public void setOnClickListener(View.OnClickListener listener) {
-        this.listener = listener;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if(listener != null) {
-            listener.onClick(view);
-        }
-    }
-
-    public static class CountryViewHolder extends RecyclerView.ViewHolder {
+    public static class CountryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView ivFlag;
         private TextView tvCountryName;
         private TextView tvCountryCapital;
         private TextView tvCountryPopulation;
         private Context context;
+        private ICountryListener listener;
 
-        public CountryViewHolder(View itemView, Context context) {
+        public CountryViewHolder(View itemView, Context context, ICountryListener listener) {
             super(itemView);
             /** Guardamos el contexto para poder acceder a los recursos de la aplicación */
             this.context = context;
@@ -99,6 +86,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
             tvCountryName = (TextView) itemView.findViewById(R.id.tvCountryName);
             tvCountryCapital = (TextView) itemView.findViewById(R.id.tvCountryCapital);
             tvCountryPopulation = (TextView) itemView.findViewById(R.id.tvCountryPopulation);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
         }
 
         public void bindCountry(Country country) {
@@ -140,6 +129,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
             /** Asignamos el número de habitantes */
             tvCountryPopulation.setText(String.valueOf(country.getPopulation()));
+        }
+
+        @Override
+        public void onClick(View view) {
+            if(listener != null) {
+                listener.onSelectedCountry(getAdapterPosition());
+            }
         }
     }
 }
