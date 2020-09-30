@@ -1,7 +1,7 @@
 package com.germangascon.recyclerviewcountries;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,10 +82,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
             /** Guardamos el contexto para poder acceder a los recursos de la aplicación */
             this.context = context;
             /** Obtenemos la referencia a los componentes del layout */
-            ivFlag = (ImageView) itemView.findViewById(R.id.ivFlag);
-            tvCountryName = (TextView) itemView.findViewById(R.id.tvCountryName);
-            tvCountryCapital = (TextView) itemView.findViewById(R.id.tvCountryCapital);
-            tvCountryPopulation = (TextView) itemView.findViewById(R.id.tvCountryPopulation);
+            ivFlag = itemView.findViewById(R.id.ivFlag);
+            tvCountryName = itemView.findViewById(R.id.tvCountryName);
+            tvCountryCapital = itemView.findViewById(R.id.tvCountryCapital);
+            tvCountryPopulation = itemView.findViewById(R.id.tvCountryPopulation);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
