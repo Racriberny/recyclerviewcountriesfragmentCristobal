@@ -6,15 +6,15 @@ package com.germangascon.recyclerviewcountries;
  */
 public class Country {
     /** Código ISO (de 2 caracteres) del país */
-    private String code;
+    private final String code;
     /** Nombre del país */
-    private String name;
+    private final String name;
     /** Número total de habitantes del país */
-    private long population;
+    private final long population;
     /** Nombre de la capital del país */
-    private String capital;
+    private final String capital;
     /** Código ISO (de 3 caracteres) del país. Aunque no hacemos uso de él */
-    private String iso3;
+    private final String iso3;
 
     /**
      * Construye un objeto de tipo Country

@@ -32,9 +32,9 @@ import android.widget.TextView;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
 
-    private Country[] countries;
-    private Context context;
-    private ICountryListener listener;
+    private final Country[] countries;
+    private final Context context;
+    private final ICountryListener listener;
 
     public CountryAdapter(Context context, Country[] countries, ICountryListener listener) {
         this.context = context;
@@ -70,12 +70,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
     public static class CountryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView ivFlag;
-        private TextView tvCountryName;
-        private TextView tvCountryCapital;
-        private TextView tvCountryPopulation;
-        private Context context;
-        private ICountryListener listener;
+        private final ImageView ivFlag;
+        private final TextView tvCountryName;
+        private final TextView tvCountryCapital;
+        private final TextView tvCountryPopulation;
+        private final Context context;
+        private final ICountryListener listener;
 
         public CountryViewHolder(View itemView, Context context, ICountryListener listener) {
             super(itemView);

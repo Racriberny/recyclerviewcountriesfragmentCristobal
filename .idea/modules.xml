@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="recyclerviewcountries/app" />
-      <module fileurl="file://$PROJECT_DIR$/recyclerviewcountries.iml" filepath="$PROJECT_DIR$/recyclerviewcountries.iml" group="recyclerviewcountries" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recyclerviewcountries.iml" filepath="$PROJECT_DIR$/.idea/modules/recyclerviewcountries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/recyclerviewcountries.app.unitTest.iml" />
     </modules>
   </component>
 </project>

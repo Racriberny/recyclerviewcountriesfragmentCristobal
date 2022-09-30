@@ -22,7 +22,7 @@ public class CountryParser {
     /** Array que contendrá los objetos Country */
     private Country[] countries;
     /** InputStream para poder leer del archivo countries.xml */
-    private InputStream countriesFile;
+    private final InputStream countriesFile;
 
     /** Al constructor le pasamos el contexto para que pueda tener acceso a los recursos de la aplicación */
     public CountryParser(Context c) {
@@ -61,7 +61,7 @@ public class CountryParser {
                 String countryCode = item.getAttributes().getNamedItem("countryCode").getNodeValue();
                 String countryName = item.getAttributes().getNamedItem("countryName").getNodeValue();
                 String countryCapital = item.getAttributes().getNamedItem("capital").getNodeValue();
-                long countryPopulation = Long.valueOf(item.getAttributes().getNamedItem("population").getNodeValue());
+                long countryPopulation = Long.parseLong(item.getAttributes().getNamedItem("population").getNodeValue());
                 String countryIso3 = item.getAttributes().getNamedItem("isoAlpha3").getNodeValue();
                 /** Con los datos obtenidos, creamos el objeto Country en la posición i del array */
                 countries[i] = new Country(countryCode, countryName, countryPopulation, countryCapital, countryIso3);

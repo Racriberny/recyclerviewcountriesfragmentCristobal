@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements ICountryListener {
 
-    private RecyclerView recView;
     private Country[] countries;
 
     @Override
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements ICountryListener 
         setContentView(R.layout.activity_main);
 
         /** Obtenemos la referencia al RecyclerView */
-        recView = findViewById(R.id.recView);
+        RecyclerView recView = findViewById(R.id.recView);
         recView.setHasFixedSize(true);
 
         /** Creamos una instancia de nuestro parser personalizado */
