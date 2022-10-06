@@ -26,7 +26,7 @@ public class CountryParser {
 
     /** Al constructor le pasamos el contexto para que pueda tener acceso a los recursos de la aplicación */
     public CountryParser(Context c) {
-        /** Obtenemos una referencia al archivo /res/raw/countries.xml */
+        /* Obtenemos una referencia al archivo /res/raw/countries.xml */
         this.countriesFile = c.getResources().openRawResource(R.raw.countries);
     }
 
@@ -36,37 +36,37 @@ public class CountryParser {
      * @return boolean Devuelve verdadero si ha ido bien. False en caso contrario.
      */
     public boolean parse() {
-        /** Parsed controla si se han podido parsear los datos. Inicialmente a false */
+        /* Parsed controla si se han podido parsear los datos. Inicialmente a false */
         boolean parsed = false;
-        /** Inicializamos a null el array de países */
+        /* Inicializamos a null el array de países */
         countries = null;
         try {
-            /** Obtenemos una referencia al DocumentBuilderFactory necesaria para parsear mediante DOM */
+            /* Obtenemos una referencia al DocumentBuilderFactory necesaria para parsear mediante DOM */
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            /** Obtenemos una referencia al DocumentBuilder necesaria para parsear mediante DOM */
+            /* Obtenemos una referencia al DocumentBuilder necesaria para parsear mediante DOM */
             DocumentBuilder builder = factory.newDocumentBuilder();
-            /** Obtenemos una referencia al Document parseando mediante DOM */
+            /* Obtenemos una referencia al Document parseando mediante DOM */
             Document dom = builder.parse(countriesFile);
-            /** Obtenemos el elemento raíz del documento */
+            /* Obtenemos el elemento raíz del documento */
             Element root = dom.getDocumentElement();
-            /** Obtenemos la lista de nodos con el tag "country" */
+            /* Obtenemos la lista de nodos con el tag "country" */
             NodeList items = root.getElementsByTagName("country");
-            /** Inicializamos el array de countries con tamaño igual al número de nodos de tipo country */
+            /* Inicializamos el array de countries con tamaño igual al número de nodos de tipo country */
             countries = new Country[items.getLength()];
-            /** Recorremos cada uno de los nodos */
+            /* Recorremos cada uno de los nodos */
             for (int i = 0; i < items.getLength(); i++) {
-                /** Obtenemos el nodo de la posición i */
+                /* Obtenemos el nodo de la posición i */
                 Node item = items.item(i);
-                /** Obtenemos los atributos necesarios para construir cada objeto Country */
+                /* Obtenemos los atributos necesarios para construir cada objeto Country */
                 String countryCode = item.getAttributes().getNamedItem("countryCode").getNodeValue();
                 String countryName = item.getAttributes().getNamedItem("countryName").getNodeValue();
                 String countryCapital = item.getAttributes().getNamedItem("capital").getNodeValue();
                 long countryPopulation = Long.parseLong(item.getAttributes().getNamedItem("population").getNodeValue());
                 String countryIso3 = item.getAttributes().getNamedItem("isoAlpha3").getNodeValue();
-                /** Con los datos obtenidos, creamos el objeto Country en la posición i del array */
+                /* Con los datos obtenidos, creamos el objeto Country en la posición i del array */
                 countries[i] = new Country(countryCode, countryName, countryPopulation, countryCapital, countryIso3);
             }
-            /** Si hemos llegado hasta aquí, podemos asegurar que el documento xml ha sido parseado correctamente */
+            /* Si hemos llegado hasta aquí, podemos asegurar que el documento xml ha sido parseado correctamente */
             parsed = true;
         } catch (ParserConfigurationException pce) {
             Log.e("CountryParser", "ParserConfigurationException: "+pce.getLocalizedMessage());
